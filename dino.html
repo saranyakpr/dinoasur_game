@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-eqiv="X-UA-compatible" content="IE=Rdge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Dinoasur game</title>
+	<link rel="stylesheet" href="dino.css">
+</head>
+<body>
+<section id="game">
+   <div id="dino"></div>
+   <div id="cactus"></div>
+</section>
+
+
+
+
+</body>
+
+<script>
+
+   const dino = document.getElementById("dino");
+   const cactus = document.getElementById("cactus");
+   
+   function jump(){
+      setTimeout(()=>{
+	     if(dino.classList != "jump"){
+		    dino.classList.add("jump");
+		setTimeout(function(){
+		    dino.classList.remove("jump");
+		},300)
+		 }
+	     
+	  })
+   
+   
+   }
+   document.addEventListener("keydown", function(e){
+      jump();
+   })
+   
+
+
+   let is_alive = setInterval(()=>{
+      // dino position
+	  let dinotop = parseInt(window.getComputedStyle(dino).getPropertyValue("top"));
+	  // cactus position
+	  let cactusleft = parseInt(window.getComputedStyle(cactus).getPropertyValue("left"));
+	  //detect collision
+	  if(cactusleft<50 && cactusleft>0 && dinotop >= 140){
+	     alert("game over");
+	  }
+	  
+   },10)
+
+
+
+</script>
+</html>
